@@ -10,13 +10,8 @@ import java.util.List;
 /**
  * @author hisham.zoghbi or 07.02.23
  */
-@Service
-@AllArgsConstructor
-public class StudentService {
-
-    private final StudentRepository studentRepository;
-    public List<Student> getAllStudents(){
-        return studentRepository.findAll();
-    }
-    public Student createStudent(Student student){return studentRepository.save(student);}
+public interface StudentService {
+    public List<Student> getAllStudents();
+    public Student createStudent(Student student);
+    public Student changeStudent(Student student);
 }

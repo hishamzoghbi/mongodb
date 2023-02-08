@@ -2,6 +2,7 @@ package de.zoghbi.mongodb.controller;
 
 import de.zoghbi.mongodb.model.Student;
 import de.zoghbi.mongodb.service.StudentService;
+import de.zoghbi.mongodb.service.StudentServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -16,16 +17,21 @@ import java.util.List;
 @AllArgsConstructor
 public class StudentController {
 
-    private final StudentService studentService;
+    private final StudentServiceImpl studentServiceImpl;
 
     @GetMapping
     public List<Student> getAllStudents(){
-        return studentService.getAllStudents();
+        return studentServiceImpl.getAllStudents();
     }
 
     @PostMapping("/student")
     public Student createStudent(@RequestBody Student student){
-        return studentService.createStudent(student);
+        return studentServiceImpl.createStudent(student);
+    }
+
+    @PutMapping("/student")
+    public Student changeStudent(@RequestBody Student student){
+        return studentServiceImpl.changeStudent(student);
     }
 
 }
