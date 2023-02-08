@@ -3,10 +3,8 @@ package de.zoghbi.mongodb.controller;
 import de.zoghbi.mongodb.model.Student;
 import de.zoghbi.mongodb.service.StudentService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,7 +12,7 @@ import java.util.List;
  * @author hisham.zoghbi or 07.02.23
  */
 @RestController
-@RequestMapping("api/students")
+@RequestMapping("api/v1/students")
 @AllArgsConstructor
 public class StudentController {
 
@@ -26,7 +24,7 @@ public class StudentController {
     }
 
     @PostMapping("/student")
-    public Student createStudent(Student student){
+    public Student createStudent(@RequestBody Student student){
         return studentService.createStudent(student);
     }
 
