@@ -13,7 +13,7 @@ import java.util.List;
  * @author hisham.zoghbi or 07.02.23
  */
 @RestController
-@RequestMapping("api/v1/students")
+@RequestMapping("api/students")
 @AllArgsConstructor
 public class StudentController {
 
@@ -24,14 +24,22 @@ public class StudentController {
         return studentServiceImpl.getAllStudents();
     }
 
+    @GetMapping("/student/{id}")
+    public Student getStudentById(@PathVariable("id") String id){return studentServiceImpl.getStudentById(id);}
+
     @PostMapping("/student")
-    public Student createStudent(@RequestBody Student student){
-        return studentServiceImpl.createStudent(student);
+    public Student addStudent(@RequestBody Student student){
+        return studentServiceImpl.addStudent(student);
     }
 
     @PutMapping("/student")
-    public Student changeStudent(@RequestBody Student student){
-        return studentServiceImpl.changeStudent(student);
+    public Student updateStudent(@RequestBody Student student){
+        return studentServiceImpl.updateStudent(student);
+    }
+
+    @DeleteMapping("/student/{id}")
+    public void deleteStudent(@PathVariable("id") String id){
+        studentServiceImpl.deleteStudent(id);
     }
 
 }

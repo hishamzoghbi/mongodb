@@ -18,7 +18,9 @@ public class StudentServiceImpl implements StudentService{
     public List<Student> getAllStudents(){
         return studentRepository.findAll();
     }
-    public Student createStudent(Student student){return studentRepository.save(student);}
+    public Student getStudentById(String id){return studentRepository.findById(id).get();}
+    public Student addStudent(Student student){return studentRepository.save(student);}
 
-    public Student changeStudent(Student student){return studentRepository.save(student);}
+    public Student updateStudent(Student student){return studentRepository.save(student);}
+    public void deleteStudent(String id){studentRepository.deleteById(id);}
 }
